@@ -10,4 +10,18 @@ router.get('/cars', (req, res) => {
   .then(data => {
     res.json(data)
   })
+})
+
+router.get('/cars/:id', (req, res) => {
+  queries.cars.getOne(req.params.id)
+  .then(data => {
+    res.json(data)
+  })
+})
+
+router.post('/cars', (req, res) => {
+  queries.cars.create(req.body)
+  .then(data => {
+    res.send(data[0])
+  });
 });
